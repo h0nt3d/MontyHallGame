@@ -1,6 +1,16 @@
 #include <iostream>
 
+
+void gameplay();
+
+
 int main() {
+	gameplay();
+	return 0;
+}
+
+
+void gameplay() {
 	int doors[3];
 
 	srand(time(NULL));
@@ -66,5 +76,6 @@ int main() {
 		else
 			std::cout << "You lost!";
 	}
-	return 0;
 }
+
+
