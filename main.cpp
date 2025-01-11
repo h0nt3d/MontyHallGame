@@ -5,7 +5,18 @@ void gameplay();
 
 
 int main() {
-	gameplay();
+	int replay = 0;
+	do {
+		int replayIn;
+		gameplay();
+		std::cout << "Would you like to play again?\n1. Yes\n2. No\nType number: ";
+		std::cin >> replayIn;
+		if (replayIn == 1)
+			replay += 0;
+		else if (replayIn == 2)
+			replay += 1;
+	}
+	while(replay < 1);
 	return 0;
 }
 
@@ -66,15 +77,15 @@ void gameplay() {
 
 	if (stayChoice == 1) {
 		if ((userIn - 1) == prizeDoor)
-			std::cout << "You won the prize!";
+			std::cout << "You won the prize!\n";
 		else
-			std::cout << "You lost!";
+			std::cout << "You lost!\n";
 	}
 	else {
 		if (remainingDoor == prizeDoor)
-			std::cout << "You won the prize!";
+			std::cout << "You won the prize!\n";
 		else
-			std::cout << "You lost!";
+			std::cout << "You lost!\n";
 	}
 }
 
