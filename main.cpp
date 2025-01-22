@@ -43,6 +43,11 @@ void gameplay() {
 		//exit(1);
 	}
 
+	if ((userIn < 1) || (userIn > 3)) {
+		cout << "Invalid Input\n";
+		return;
+	}
+
 
 	if ((userIn - 1) == prizeDoor) {
 
