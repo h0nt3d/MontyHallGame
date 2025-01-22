@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <limits>
+using namespace std;
 
 void gameplay();
 
@@ -9,8 +10,8 @@ int main() {
 	do {
 		int replayIn;
 		gameplay();
-		std::cout << "Would you like to play again?\n1. Yes\n2. No\nType number: ";
-		std::cin >> replayIn;
+		cout << "Would you like to play again?\n1. Yes\n2. No\nType number: ";
+		cin >> replayIn;
 		if (replayIn == 1)
 			replay += 0;
 		else if (replayIn == 2)
@@ -31,15 +32,24 @@ void gameplay() {
 	int remainingDoor;
 
 
-	std::cout << "Pick a Door:\n\n1 \t2 \t3 \n\nType: ";
-	std::cin >> userIn;
+	cout << "Pick a Door:\n\n1 \t2 \t3 \n\nType: ";
+	cin >> userIn;
+
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Invalid Input\n";
+		return;
+		//exit(1);
+	}
+
 
 	if ((userIn - 1) == prizeDoor) {
 
 		while (doorChoice == prizeDoor) {
 			doorChoice = rand() % 3;
 		}
-		std::cout << "\nDoor " << (doorChoice + 1) << " is empty.\n\n";
+		cout << "\nDoor " << (doorChoice + 1) << " is empty.\n\n";
 
 		for (int i = 0; i < sizeof(doors); i++) {
 			if (i != (userIn - 1) && i != doorChoice) {
@@ -58,7 +68,7 @@ void gameplay() {
 			}
 		}
 
-		std::cout << "\nDoor " << (doorChoice + 1) << " is empty.\n\n";
+		cout << "\nDoor " << (doorChoice + 1) << " is empty.\n\n";
 
 		for (int i = 0; i < sizeof(doors); i++) {
 			if (i != (userIn - 1) && i != doorChoice) {
@@ -69,23 +79,23 @@ void gameplay() {
 
 	}
 
-	std::cout << "Would you like to switch to Door " << (remainingDoor + 1) << " or stay on Door " << userIn << " ?\n";
+	cout << "Would you like to switch to Door " << (remainingDoor + 1) << " or stay on Door " << userIn << " ?\n";
 
 	int stayChoice;
-	std::cout << "1. Stay \n2. Switch \nType in number: ";
-	std::cin >> stayChoice;
+	cout << "1. Stay \n2. Switch \nType in number: ";
+	cin >> stayChoice;
 
 	if (stayChoice == 1) {
 		if ((userIn - 1) == prizeDoor)
-			std::cout << "You won the prize!\n";
+			cout << "You won the prize!\n";
 		else
-			std::cout << "You lost!\n";
+			cout << "You lost!\n";
 	}
 	else {
 		if (remainingDoor == prizeDoor)
-			std::cout << "You won the prize!\n";
+			cout << "You won the prize!\n";
 		else
-			std::cout << "You lost!\n";
+			cout << "You lost!\n";
 	}
 }
 
